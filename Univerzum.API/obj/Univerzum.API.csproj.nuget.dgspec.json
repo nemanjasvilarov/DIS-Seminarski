@@ -1,0 +1,87 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\DIS Seminarski - Nemanja Svilarov MIT 6-25\\DISZaLogistikuKosmickeRudarskeFlote\\Univerzum.API\\Univerzum.API.csproj": {}
+  },
+  "projects": {
+    "D:\\DIS Seminarski - Nemanja Svilarov MIT 6-25\\DISZaLogistikuKosmickeRudarskeFlote\\Univerzum.API\\Univerzum.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\DIS Seminarski - Nemanja Svilarov MIT 6-25\\DISZaLogistikuKosmickeRudarskeFlote\\Univerzum.API\\Univerzum.API.csproj",
+        "projectName": "Univerzum.API",
+        "projectPath": "D:\\DIS Seminarski - Nemanja Svilarov MIT 6-25\\DISZaLogistikuKosmickeRudarskeFlote\\Univerzum.API\\Univerzum.API.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "D:\\DIS Seminarski - Nemanja Svilarov MIT 6-25\\DISZaLogistikuKosmickeRudarskeFlote\\Univerzum.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\PROGRAM FILES\\DOTNET\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.17, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[3.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\PROGRAM FILES\\DOTNET\\sdk\\9.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
