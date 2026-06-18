@@ -1,0 +1,6 @@
+@SvemirskaEkonomija.API_HostAddress = http://localhost:5285
+
+GET {{SvemirskaEkonomija.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

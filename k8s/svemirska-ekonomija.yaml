@@ -1,0 +1,51 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svemirska-ekonomija-dep
+  labels:
+    app: svemirska-ekonomija
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svemirska-ekonomija
+  template:
+    metadata:
+      labels:
+        app: svemirska-ekonomija
+    spec:
+      containers:
+        - name: svemirska-ekonomija-api
+          image: svemirska-ekonomija-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Development"
+            - name: ASPNETCORE_HTTP_PORTS
+              value: "8080"
+            - name: MongoSettings__ConnectionString
+              value: "mongodb://mongodb-service:27017"
+            - name: MongoSettings__EkonomijaDb
+              value: "Kosmos_Ekonomija"
+            - name: JwtSettings__Secret
+              value: "PodrazumevaniUltraTajniKljucZaLokalniRazvoj123!"
+            - name: JwtSettings__Issuer
+              value: "IdentitetAPI"
+            - name: JwtSettings__Audience
+              value: "KosmickaFlota"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svemirska-ekonomija-service
+spec:
+  selector:
+    app: svemirska-ekonomija
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30002
+  type: NodePort

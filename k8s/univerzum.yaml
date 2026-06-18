@@ -1,0 +1,53 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: univerzum-dep
+  labels:
+    app: univerzum
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: univerzum
+  template:
+    metadata:
+      labels:
+        app: univerzum
+    spec:
+      containers:
+        - name: univerzum-api
+          image: univerzum-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Development"
+            - name: ASPNETCORE_HTTP_PORTS
+              value: "8080"
+            - name: MongoSettings__ConnectionString
+              value: "mongodb://mongodb-service:27017"
+            - name: MongoSettings__UniverzumDb
+              value: "Kosmos_Univerzum"
+            - name: ServiceUrls__SvemirskaEkonomijaApi
+              value: "http://svemirska-ekonomija-service:8080"
+            - name: JwtSettings__Secret
+              value: "PodrazumevaniUltraTajniKljucZaLokalniRazvoj123!"
+            - name: JwtSettings__Issuer
+              value: "IdentitetAPI"
+            - name: JwtSettings__Audience
+              value: "KosmickaFlota"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: univerzum-service
+spec:
+  selector:
+    app: univerzum
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30003
+  type: NodePort

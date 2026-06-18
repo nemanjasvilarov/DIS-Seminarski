@@ -1,0 +1,51 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identitet-dep
+  labels:
+    app: identitet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: identitet
+  template:
+    metadata:
+      labels:
+        app: identitet
+    spec:
+      containers:
+        - name: identitet-api
+          image: identitet-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Development"
+            - name: ASPNETCORE_HTTP_PORTS
+              value: "8080"
+            - name: MongoSettings__ConnectionString
+              value: "mongodb://mongodb-service:27017"
+            - name: MongoSettings__IdentitetDb
+              value: "Kosmos_Identitet"
+            - name: JwtSettings__Secret
+              value: "PodrazumevaniUltraTajniKljucZaLokalniRazvoj123!"
+            - name: JwtSettings__Issuer
+              value: "IdentitetAPI"
+            - name: JwtSettings__Audience
+              value: "KosmickaFlota"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: identitet-service
+spec:
+  selector:
+    app: identitet
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30008
+  type: NodePort
